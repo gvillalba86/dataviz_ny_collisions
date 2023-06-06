@@ -35,6 +35,7 @@ if response.status_code == 200:
     nyc_districts = response.json()
 
 app = Dash(__name__,  external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
 
 borough_colors = ["#ef476f","#ffd166","#f78c6b", "#06d6a0","#118ab2"]
 
