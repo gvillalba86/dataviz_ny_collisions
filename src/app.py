@@ -583,5 +583,5 @@ def update_factors_vehices_graph(boroughs):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
 
