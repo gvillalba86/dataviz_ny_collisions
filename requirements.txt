@@ -5,4 +5,3 @@ pandas
 plotly==5.14.1
 requests==2.31.0
 gunicorn
-dash-tools
