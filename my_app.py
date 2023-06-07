@@ -284,40 +284,6 @@ def update_map(years, stat_name):
     
     return fig
 
-'''
-@callback(
-    [Output('selected-borough-name', 'children'),
-     Output('selected-neighborhood-name', 'children'),
-     Output('num-crashes', 'children'),
-     Output('num-vehicles', 'children'),
-     Output('num-injured', 'children'),
-     Output('per-injured', 'children'),
-     Output('num-killed', 'children'),
-     Output('per-killed', 'children'),
-     ],
-    [Input('slider-years', 'value'),
-    Input('choropleth_map', 'clickData')]
-)
-def update_stats(years, sel_region):
-    years_list = list(range(years[0], years[1]+1))
-    dff = df[df['Datetime'].dt.year.isin(years_list)]
-    if sel_region is None:
-        borough_name = 'New York City'
-        neighborhood_name = 'All neighborhoods'
-    else:
-        borough_name = sel_region['points'][0]['customdata'][0]
-        neighborhood_name = sel_region['points'][0]['customdata'][1]
-        dff = dff[dff['District']==sel_region['points'][0]['customdata'][1]]
-    return (borough_name, 
-            neighborhood_name, 
-            dff.shape[0], 
-            dff['Vehicles involved'].sum(), 
-            dff['PERSONS INJURED'].sum(), 
-            f"{dff['PERSONS INJURED'].sum()/dff.shape[0]:.2%} of total",
-            dff['PERSONS KILLED'].sum(),
-            f"{dff['PERSONS KILLED'].sum()/dff.shape[0]:.2%} of total",
-    )
-'''
 
 @callback(
     [Output('evol_graph_neighborhood', 'figure'),
@@ -380,7 +346,7 @@ def update_evolution_graph_neighborhood(timeframe, years, sel_region):
     fig.update_layout(
         autosize=True,
         legend=dict(orientation="h"),
-        margin={'l':0, 'r':0, 'b':0, 't':30, 'pad':0},
+        margin={'l':0, 'r':0, 'b':30, 't':30, 'pad':0},
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         font_color="#7fafdf",
