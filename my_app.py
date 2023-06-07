@@ -13,9 +13,9 @@ import dash_daq as daq
 import requests
 
 
-path = Path('data') / 'cleaned_nyc_crashes.csv'
-url = 'https://gerson-bucket-01.s3.eu-south-2.amazonaws.com/cleaned_nyc_crashes.csv'
-df = pd.read_csv(url, parse_dates=['DATETIME'], converters={"FACTORS": literal_eval, "VEHICLE TYPES": literal_eval})
+path = Path('data') / 'cleaned_nyc_crashes_reduced.csv'
+#url = 'https://gerson-bucket-01.s3.eu-south-2.amazonaws.com/cleaned_nyc_crashes.csv'
+df = pd.read_csv(path, parse_dates=['DATETIME'], converters={"FACTORS": literal_eval, "VEHICLE TYPES": literal_eval})
 df.columns = [col.capitalize() for col in df.columns]
 df.rename(columns={'N vehicles': 'Vehicles involved'}, inplace=True)
 df['Total crashes'] = 1
